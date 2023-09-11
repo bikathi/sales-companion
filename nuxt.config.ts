@@ -9,4 +9,9 @@ export default defineNuxtConfig({
 	},
 	css: ['@/assets/css/tailwind.css'],
 	modules: ['nuxt-icon', '@pinia/nuxt'],
+	runtimeConfig: {
+		public: {
+			ORGANIZATION_NAME: process.env.ORGANIZATION_NAME,
+		}
+	}
 });
