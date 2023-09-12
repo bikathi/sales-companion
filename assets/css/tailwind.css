@@ -1,3 +1,15 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito&family=Roboto&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer components {
+    .product-upload-inputs {
+        @apply outline-none py-2 border-b border-b-gray-400/80 focus:border-gray-400 font-nunito tracking-wide;
+    }
+}
+
+.product-upload-labels {
+    @apply font-nunito text-lg mt-2;
+}
