@@ -85,10 +85,7 @@
 			</label>
 		</div>
 		<div class="flex justify-center p-2">
-			<button
-				class="bg-green-500 transition-colors duration-200 ease-linear hover:bg-green-400 p-[10px] text-white rounded-lg font-nunito">
-				Upload Product
-			</button>
+			<button class="generic-button p-0">Upload Product</button>
 		</div>
 	</form>
 </template>
