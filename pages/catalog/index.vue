@@ -44,14 +44,14 @@
 			</div>
 		</div>
 		<div class="h-full w-full">
-			<div class="overflow-x-auto">
+			<div class="overflow-x-auto h-full">
 				<table class="table">
 					<!-- head -->
 					<thead>
 						<tr>
-							<th>Name</th>
-							<th>Job</th>
-							<th>Favorite Color</th>
+							<th>Product Name</th>
+							<th>Product Description</th>
+							<th>Product Color & Weight</th>
 							<th></th>
 						</tr>
 					</thead>
@@ -87,9 +87,23 @@
 							</td>
 							<td>Purple</td>
 							<th>
-								<button class="btn btn-ghost btn-xs">
-									details
-								</button>
+								<div class="dropdown dropdown-right">
+									<label
+										tabindex="0"
+										class="btn m-1 btn-sm"
+										>Actions</label
+									>
+									<ul
+										tabindex="0"
+										class="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52">
+										<li><button>Sell Product</button></li>
+										<li>
+											<button class="hover:bg-warning">
+												Delete Product
+											</button>
+										</li>
+									</ul>
+								</div>
 							</th>
 						</tr>
 					</tbody>
@@ -97,10 +111,14 @@
 			</div>
 		</div>
 	</div>
+
+	<!-- Initiate sales screen -->
+	<InitiateSaleModal />
 </template>
 
 <script setup>
 	definePageMeta({
 		layout: 'dashboard-layout',
 	});
+	const displayInitiateSaleScreen = ref(false);
 </script>
