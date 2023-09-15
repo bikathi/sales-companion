@@ -7,7 +7,8 @@
     "generate": "nuxt generate",
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare",
-    "prisma:migrate": "npx prisma migrate dev --name init"
+    "prisma:migrate": "npx prisma migrate dev --name init",
+    "env:local": "npx nuxi dev --dotenv .env.local"
   },
   "devDependencies": {
     "@nuxt/devtools": "latest",
