@@ -10,13 +10,15 @@
     }
 
     .generic-button {
-        @apply bg-green-500 transition-colors duration-200 ease-linear hover:bg-green-400 p-[10px] text-white rounded-lg font-nunito;
+        @apply bg-accent transition-colors duration-200 ease-linear hover:bg-accent-focus p-[10px] text-white rounded-lg font-nunito;
+    }
+
+    .product-upload-labels {
+        @apply font-nunito text-lg mt-2;
     }
 }
 
-.product-upload-labels {
-    @apply font-nunito text-lg mt-2;
-}
+
 
 .product-search-input {
     @apply outline-none rounded-l-full w-full p-[10px] border self-start;
