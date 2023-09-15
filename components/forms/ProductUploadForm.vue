@@ -84,6 +84,20 @@
 		<div class="flex flex-col space-y-2">
 			<label
 				class="product-upload-labels after:content-['*'] after:text-error"
+				for="product-base-price"
+				>Product Base Price</label
+			>
+			<input
+				type="text"
+				datatype="number"
+				pattern="[0-...]"
+				class="product-upload-inputs"
+				placeholder="Product Base Price"
+				id="product-base-price" />
+		</div>
+		<div class="flex flex-col space-y-2">
+			<label
+				class="product-upload-labels after:content-['*'] after:text-error"
 				for="product-asignee"
 				>Product Asignee</label
 			>
