@@ -1,5 +1,10 @@
 <template>
-	<h1>Welcome to user creation</h1>
+	<div class="flex-grow flex flex-col items-center p-2">
+		<h1 class="mt-5 font-roboto text-2xl tracking-wide">
+			Add a New Employee
+		</h1>
+		<NewEmployeeForm />
+	</div>
 </template>
 
 <script setup>
