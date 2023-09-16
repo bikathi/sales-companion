@@ -6,10 +6,22 @@
 
 @layer components {
     .product-upload-inputs {
-        @apply outline-none py-2 border-b border-b-gray-400/80 focus:border-gray-400 font-nunito tracking-wide;
+        @apply outline-none py-2 border-b border-b-gray-400/80 focus:border-gray-400 font-nunito tracking-wide autofill:font-nunito;
+    }
+
+    .generic-button {
+        @apply bg-accent transition-colors duration-200 ease-linear hover:bg-accent-focus p-[10px] text-white rounded-lg font-nunito;
+    }
+
+    .product-upload-labels {
+        @apply font-nunito text-lg mt-2;
     }
 }
 
-.product-upload-labels {
-    @apply font-nunito text-lg mt-2;
+.product-search-input {
+    @apply outline-none rounded-l-full w-full p-[10px] border self-start;
+}
+
+.sr-radio-btns {
+    @apply hover:cursor-pointer p-2 rounded-md peer-checked:border peer-checked:bg-base-300;
 }

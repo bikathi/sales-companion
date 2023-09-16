@@ -3,7 +3,8 @@ export default defineNuxtConfig({
 	devtools: { enabled: true },
 	components: [
 		{ path: '~/components/forms' },
-		{ path: '~/components/icons' }
+		{ path: '~/components/icons' },
+		{ path: '~/components/modals' },
 	],
 	postcss: {
 		plugins: {
