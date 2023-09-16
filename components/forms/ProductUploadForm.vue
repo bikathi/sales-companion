@@ -131,7 +131,11 @@
 			</label>
 		</div>
 		<div class="flex justify-center p-2">
-			<button class="generic-button p-2">Upload Product</button>
+			<button
+				class="generic-button p-2"
+				type="submit">
+				Upload Product
+			</button>
 		</div>
 	</form>
 </template>
