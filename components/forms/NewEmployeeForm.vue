@@ -44,24 +44,36 @@
 				>
 				<input
 					type="text"
-					datatype="number"
-					pattern="[0-...]"
 					class="product-upload-inputs"
 					placeholder="Employee Name"
 					id="employee-name" />
 			</div>
 		</div>
-		<div class="flex flex-col space-y-2">
-			<label
-				class="product-upload-labels after:content-['*'] after:text-error"
-				for="email-address"
-				>Email Address</label
-			>
-			<input
-				type="email"
-				class="product-upload-inputs"
-				placeholder="Enter Email Address"
-				id="email-address" />
+		<div class="flex space-x-2">
+			<div class="flex flex-col w-1/2">
+				<label
+					class="product-upload-labels after:content-['*'] after:text-error"
+					for="email-address"
+					>Email Address</label
+				>
+				<input
+					type="email"
+					class="product-upload-inputs"
+					placeholder="Enter Email Address"
+					id="email-address" />
+			</div>
+			<div class="flex flex-col w-1/2">
+				<label
+					class="product-upload-labels after:content-['*'] after:text-error"
+					for="password"
+					>Password</label
+				>
+				<input
+					type="password"
+					class="product-upload-inputs"
+					placeholder="Enter A Password"
+					id="password" />
+			</div>
 		</div>
 		<div class="flex flex-col space-y-2">
 			<label
