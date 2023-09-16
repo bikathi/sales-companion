@@ -8,7 +8,9 @@
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare",
     "prisma:migrate": "npx prisma migrate dev --name init",
-    "env:local": "npx nuxi dev --dotenv .env.local"
+    "env:local": "npx nuxi dev --dotenv .env.local",
+    "prisma:format": "npx prisma format",
+    "prisma:migrate:local": "dotenv -e .env.local -- npx prisma migrate dev"
   },
   "devDependencies": {
     "@nuxt/devtools": "latest",
@@ -22,6 +24,8 @@
   },
   "dependencies": {
     "@pinia/nuxt": "^0.4.11",
+    "@prisma/client": "^5.2.0",
+    "dotenv-cli": "^7.3.0",
     "pinia": "^2.1.6"
   }
 }
