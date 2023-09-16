@@ -9,3 +9,39 @@ datasource db {
   provider = "mysql"
   url      = env("DATABASE_URL")
 }
+
+model Employee {
+  id              Int       @id @default(autoincrement())
+  email           String    @unique
+  employeeId      String    @unique
+  employeeName    String
+  mobileNumber    BigInt    @unique
+  createdAt       DateTime  @default(now())
+  role            Role      @default(ROLE_VIEWER)
+  profileImage    String?
+  workingLocation String
+  products        Product[]
+}
+
+model Product {
+  id         String        @id
+  name       String
+  category   String
+  color      String?
+  weight     Float?
+  image      String
+  assignee   Employee      @relation(fields: [employeeId], references: [employeeId])
+  employeeId String
+  status     ProductStatus @default(IN_STOCK)
+  price      Float
+}
+
+enum Role {
+  ROLE_ADMIN
+  ROLE_VIEWER
+}
+
+enum ProductStatus {
+  SOLD
+  IN_STOCK
+}
