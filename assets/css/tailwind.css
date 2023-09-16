@@ -6,7 +6,7 @@
 
 @layer components {
     .product-upload-inputs {
-        @apply outline-none py-2 border-b border-b-gray-400/80 focus:border-gray-400 font-nunito tracking-wide;
+        @apply outline-none py-2 border-b border-b-gray-400/80 focus:border-gray-400 font-nunito tracking-wide autofill:font-nunito;
     }
 
     .generic-button {
