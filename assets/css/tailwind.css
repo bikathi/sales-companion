@@ -18,8 +18,10 @@
     }
 }
 
-
-
 .product-search-input {
     @apply outline-none rounded-l-full w-full p-[10px] border self-start;
+}
+
+.sr-radio-btns {
+    @apply hover:cursor-pointer p-2 rounded-md peer-checked:border peer-checked:bg-base-300;
 }
