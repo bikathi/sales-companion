@@ -1,13 +1,12 @@
 <template>
-	<form class="h-fit p-2 w-[45%] space-y-2">
+	<form
+		class="h-fit p-2 w-[45%] space-y-2"
+		method="POST"
+		@submit.prevent="submitNewEmployeeForm">
 		<div class="w-full">
+			<h1 class="product-upload-labels">Upload Employee Photo</h1>
 			<label
-				for="photos"
-				class="product-upload-labels"
-				>Upload Employee Photo</label
-			>
-			<label
-				for="dropzone-file"
+				for="picture-dropzone"
 				class="mt-2 h-48 flex flex-col items-center justify-center border-2 border-gray-300 border-dashed cursor-pointer dark:hover:bg-bray-800 hover:bg-gray-100">
 				<div
 					class="flex flex-col items-center justify-center pt-5 pb-6">
@@ -18,9 +17,15 @@
 					</p>
 				</div>
 				<input
-					id="dropzone-file"
+					id="picture-dropzone"
+					name="employee-picture"
 					type="file"
-					class="hidden" />
+					class="hidden"
+					@change="
+						(event) => {
+							imageFile = event.target.files[0];
+						}
+					" />
 			</label>
 		</div>
 		<div class="flex space-x-2">
@@ -34,7 +39,9 @@
 					type="text"
 					class="product-upload-inputs"
 					placeholder="Employee ID"
-					id="employee-id" />
+					id="employee-id"
+					name="employee-id"
+					v-model="id" />
 			</div>
 			<div class="flex flex-col space-y-2 w-1/2">
 				<label
@@ -46,7 +53,9 @@
 					type="text"
 					class="product-upload-inputs"
 					placeholder="Employee Name"
-					id="employee-name" />
+					id="employee-name"
+					name="employee-name"
+					v-model="name" />
 			</div>
 		</div>
 		<div class="flex space-x-2">
@@ -60,7 +69,9 @@
 					type="email"
 					class="product-upload-inputs"
 					placeholder="Enter Email Address"
-					id="email-address" />
+					id="email-address"
+					name="employee-email"
+					v-model="email" />
 			</div>
 			<div class="flex flex-col w-1/2">
 				<label
@@ -72,7 +83,9 @@
 					type="password"
 					class="product-upload-inputs"
 					placeholder="Enter A Password"
-					id="password" />
+					id="password"
+					name="employee-password"
+					v-model="password" />
 			</div>
 		</div>
 		<div class="flex flex-col space-y-2">
@@ -85,7 +98,9 @@
 				type="tel"
 				class="product-upload-inputs"
 				placeholder="Format 254..."
-				id="phone-number" />
+				id="phone-number"
+				name="employee-phone"
+				v-model="phoneNumber" />
 		</div>
 		<div class="flex flex-col space-y-2 w-full">
 			<label
@@ -95,7 +110,9 @@
 			>
 			<select
 				id="working-location"
-				class="product-upload-inputs bg-transparent">
+				name="employee-location"
+				class="product-upload-inputs bg-transparent"
+				v-model="location">
 				<option
 					class="hover:bg-gray-300 p-2 rounded-md"
 					v-for="(category, index) in [
@@ -122,7 +139,8 @@
 						name="employee-role"
 						id="role-admin"
 						value="ADMIN"
-						class="sr-only peer" />
+						class="sr-only peer"
+						v-model="privilege" />
 					<label
 						for="role-admin"
 						class="sr-radio-btns"
@@ -136,6 +154,7 @@
 						id="role-viewer"
 						value="VIEWER"
 						class="sr-only peer"
+						v-model="privilege"
 						checked />
 					<label
 						for="role-viewer"
@@ -148,9 +167,40 @@
 		<div class="flex justify-center p-2">
 			<button
 				type="submit"
+				@click="submitNewEmployeeForm"
 				class="generic-button p-2">
 				Save New Record
 			</button>
 		</div>
 	</form>
 </template>
+
+<script setup>
+	// form v-models
+	const id = ref('');
+	const name = ref('');
+	const email = ref('');
+	const password = ref('');
+	const phoneNumber = ref('');
+	const location = ref('');
+	const privilege = ref('');
+	const imageFile = ref(null);
+
+	async function submitNewEmployeeForm(event) {
+		const formData = new FormData();
+
+		formData.append('id', id.value);
+		formData.append('name', name.value);
+		formData.append('email', email.value);
+		formData.append('password', password.value);
+		formData.append('phoneNumber', phoneNumber.value);
+		formData.append('location', location.value);
+		formData.append('privilege', privilege.value);
+		formData.append('profileImage', imageFile.value);
+
+		const { data, error } = await useFetch('/api/new-user', {
+			method: 'POST',
+			body: formData,
+		});
+	}
+</script>
