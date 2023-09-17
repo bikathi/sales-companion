@@ -167,7 +167,6 @@
 		<div class="flex justify-center p-2">
 			<button
 				type="submit"
-				@click="submitNewEmployeeForm"
 				class="generic-button p-2">
 				Save New Record
 			</button>
@@ -186,7 +185,7 @@
 	const privilege = ref('');
 	const imageFile = ref(null);
 
-	async function submitNewEmployeeForm(event) {
+	async function submitNewEmployeeForm() {
 		const formData = new FormData();
 
 		formData.append('id', id.value);
@@ -200,6 +199,9 @@
 
 		const { data, error } = await useFetch('/api/new-user', {
 			method: 'POST',
+			headers: {
+				'Content-Type': 'mutlipart/form-data',
+			},
 			body: formData,
 		});
 	}
