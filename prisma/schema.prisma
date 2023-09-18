@@ -30,7 +30,7 @@ model Product {
   color      String?
   weight     Float?
   image      String
-  assignee   Employee      @relation(fields: [employeeId], references: [employeeId])
+  assignee   Employee?      @relation(fields: [employeeId], references: [employeeId])
   employeeId String
   status     ProductStatus @default(IN_STOCK)
   price      Float
