@@ -166,7 +166,7 @@
 				category: category.value,
 				color: color.value,
 				weight: Number(weight.value),
-				image: null,
+				image: '',
 				employeeId: employeeId.value,
 				basePrice: Number(price.value),
 			}),
