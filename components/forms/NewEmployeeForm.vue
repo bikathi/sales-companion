@@ -167,7 +167,7 @@
 		<div class="flex justify-center p-2">
 			<button
 				type="submit"
-				class="generic-button p-2">
+				class="generic-button p-2 outline-none">
 				Save New Record
 			</button>
 		</div>
@@ -183,26 +183,25 @@
 	const phoneNumber = ref('');
 	const location = ref('');
 	const privilege = ref('');
+
+	// TODO: for now the image will have to wait
 	const imageFile = ref(null);
 
 	async function submitNewEmployeeForm() {
-		const formData = new FormData();
-
-		formData.append('id', id.value);
-		formData.append('name', name.value);
-		formData.append('email', email.value);
-		formData.append('password', password.value);
-		formData.append('phoneNumber', phoneNumber.value);
-		formData.append('location', location.value);
-		formData.append('privilege', privilege.value);
-		formData.append('profileImage', imageFile.value);
-
 		const { data, error } = await useFetch('/api/new-user', {
 			method: 'POST',
 			headers: {
 				'Content-Type': 'mutlipart/form-data',
 			},
-			body: formData,
+			body: JSON.stringify({
+				id: id.value,
+				name: name.value,
+				email: email.value,
+				password: password.value,
+				phoneNumber: phoneNumber.value,
+				location: location.value,
+				privilege: privilege.value,
+			}),
 		});
 	}
 </script>
