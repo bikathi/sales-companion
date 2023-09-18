@@ -190,9 +190,6 @@
 	async function submitNewEmployeeForm() {
 		const { data, error } = await useFetch('/api/new-user', {
 			method: 'POST',
-			headers: {
-				'Content-Type': 'mutlipart/form-data',
-			},
 			body: JSON.stringify({
 				id: id.value,
 				name: name.value,
