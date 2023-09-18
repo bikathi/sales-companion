@@ -1,5 +1,7 @@
 <template>
-	<form class="h-fit p-2 w-[45%] space-y-2">
+	<form
+		class="h-fit p-2 w-[45%] space-y-2"
+		@submit="submitNewProduct($event)">
 		<div class="flex flex-col space-y-2">
 			<label
 				class="product-upload-labels after:content-['*'] after:text-error"
@@ -10,7 +12,8 @@
 				type="text"
 				class="product-upload-inputs"
 				placeholder="Product Id"
-				id="product-id" />
+				id="product-id"
+				v-model="id" />
 		</div>
 		<div class="flex space-x-4">
 			<div class="flex flex-col space-y-2 w-1/2">
@@ -23,7 +26,8 @@
 					type="text"
 					class="product-upload-inputs"
 					placeholder="Product Name"
-					id="product-name" />
+					id="product-name"
+					v-model="name" />
 			</div>
 			<div class="flex flex-col space-y-2 w-1/2">
 				<label
@@ -33,7 +37,8 @@
 				>
 				<select
 					id="product-category"
-					class="product-upload-inputs bg-transparent">
+					class="product-upload-inputs bg-transparent"
+					v-model="category">
 					<option
 						class="hover:bg-gray-300 p-2 rounded-md"
 						v-for="(category, index) in [
@@ -61,10 +66,10 @@
 				<input
 					type="text"
 					datatype="number"
-					pattern="[0-...]"
 					class="product-upload-inputs"
 					placeholder="Product Weight"
-					id="product-weight" />
+					id="product-weight"
+					v-model="weight" />
 			</div>
 			<div class="flex flex-col space-y-2 w-1/2">
 				<label
@@ -75,10 +80,10 @@
 				<input
 					type="text"
 					datatype="number"
-					pattern="[0-...]"
 					class="product-upload-inputs"
 					placeholder="Product Color"
-					id="product-color" />
+					id="product-color"
+					v-model="color" />
 			</div>
 		</div>
 		<div class="flex flex-col space-y-2">
@@ -90,10 +95,10 @@
 			<input
 				type="text"
 				datatype="number"
-				pattern="[0-...]"
 				class="product-upload-inputs"
 				placeholder="Product Base Price"
-				id="product-base-price" />
+				id="product-base-price"
+				v-model="price" />
 		</div>
 		<div class="flex flex-col space-y-2">
 			<label
@@ -104,8 +109,9 @@
 			<input
 				type="text"
 				class="product-upload-inputs"
-				placeholder="Product Id"
-				id="product-asignee" />
+				placeholder="Employee ID"
+				id="product-asignee"
+				v-model="employeeId" />
 		</div>
 		<div class="w-full">
 			<label
@@ -140,4 +146,30 @@
 	</form>
 </template>
 
-<script setup></script>
+<script setup>
+	const id = ref('');
+	const name = ref('');
+	const category = ref('');
+	const color = ref('');
+	const weight = ref('');
+	// TODO: Also here the image props will be handled later
+	const employeeId = ref('');
+	const price = ref('');
+
+	async function submitNewProduct(event) {
+		event.preventDefault();
+		const { data, error } = await useFetch('/api/new-product', {
+			method: 'POST',
+			body: JSON.stringify({
+				id: id.value,
+				name: name.value,
+				category: category.value,
+				color: color.value,
+				weight: Number(weight.value),
+				image: '',
+				employeeId: employeeId.value,
+				basePrice: Number(price.value),
+			}),
+		});
+	}
+</script>
