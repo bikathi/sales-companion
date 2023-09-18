@@ -13,7 +13,6 @@ export default defineEventHandler(async (event) => {
 				color: productDetails.color,
 				weight: productDetails.weight,
 				image: productDetails.image,
-				// assignee: ,
 				employeeId: productDetails.employeeId,
 				status: 'IN_STOCK',
 				price: productDetails.basePrice,
