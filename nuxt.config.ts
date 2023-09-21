@@ -5,6 +5,7 @@ export default defineNuxtConfig({
 		{ path: '~/components/forms' },
 		{ path: '~/components/icons' },
 		{ path: '~/components/modals' },
+		{ path: '~/components/misc' },
 	],
 	postcss: {
 		plugins: {

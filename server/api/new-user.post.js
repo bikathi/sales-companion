@@ -19,14 +19,26 @@ export default defineEventHandler(async (event) => {
 		})
 		.catch((err) => {
 			console.err(`prisma error: ${err}`);
-			return {
-				
-			}
+			throw new createError({
+				statusCode: 500,
+				message: 'Some error. Please try again later.',
+				stack: 'REDUCTED',
+			});
 		});
 
 	if (newEmployeeDetails) {
 		console.log('Saved new employee details');
+		return {
+			statusCode: 200,
+			message: 'Created new account successfully',
+			stack: 'REDUCTED',
+		};
 	} else {
 		console.log('Failed to save new employee details');
+		throw new createError({
+			statusCode: 500,
+			message: 'Some error. Please try again later.',
+			stack: 'REDUCTED',
+		});
 	}
 });
