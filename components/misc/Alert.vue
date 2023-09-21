@@ -1,6 +1,7 @@
 <template>
 	<div
-		class="flex bg-secondary/80 absolute bottom-4 left-4 text-white w-fit p-2 rounded-md items-center space-x-2">
+		:class="alertType === 'info' ? 'bg-secondary/80' : 'bg-alert'"
+		class="flex absolute bottom-4 left-4 text-white w-fit p-2 rounded-md items-center space-x-2">
 		<span class="font-nunito font">{{ alertMessage }}</span>
 		<div
 			class="radial-progress text-base-200"
@@ -13,7 +14,12 @@
 		alertMessage: {
 			type: String,
 			default: 'Alert Message Here',
-			required: false,
+			required: true,
+		},
+		alertType: {
+			type: String,
+			default: 'info',
+			required: true,
 		},
 	});
 </script>
